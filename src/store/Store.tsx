@@ -1,7 +1,7 @@
 import { createStore, combineReducers, compose, applyMiddleware, Store } from 'redux';
 import thunk, { ThunkMiddleware } from 'redux-thunk';
 import LoginReducer from './reducers/LoginReducer';
-import transactionsReducer from './reducers/transactionsReducer.tsx';
+import transactionsReducer from './reducers/TransactionsReducer.tsx';
 
 // Define RootState type
 export interface RootState {
