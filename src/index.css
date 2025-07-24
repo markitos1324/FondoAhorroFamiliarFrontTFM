@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tailwind utility for SweetAlert2 button separation */
+.swal2-actions.swal2-actions-separated {
+  @apply justify-between gap-6 flex-row !important;
+}

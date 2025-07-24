@@ -1,0 +1,32 @@
+export const LOGIN_APP = "login_app";
+export const LOGOUT_APP = "logout_app";
+export const SEND_EMAIL = "send_email";
+export const CHANGE_PASSWORD = "change_password";
+
+export const GET_NAME_SERVICE = "GET_NAME_SERVICE";
+export const GET_ENDPOINT_SERVICES = "GET_ENDPOINT_SERVICES";
+export const GET_STATUS_ENDPOINT_SERVICES = "GET_STATUS_ENDPOINT_SERVICES";
+
+// Transacciones
+export const GET_TRANSACTIONS = "GET_TRANSACTIONS";
+export const GET_TRANSACTIONS_FILTERED = "GET_TRANSACTIONS_FILTERED";
+export const CREATE_TRANSACTION = "CREATE_TRANSACTION";
+export const UPDATE_TRANSACTION = "UPDATE_TRANSACTION";
+export const DELETE_TRANSACTION = "DELETE_TRANSACTION";
+
+
+// Planes
+export const GET_PLANS = "GET_PLANS";
+export const CREATE_PLAN = "CREATE_PLAN";
+export const UPDATE_PLAN = "UPDATE_PLAN";
+export const DELETE_PLAN = "DELETE_PLAN";
+
+// Usuarios-Planes
+export const ADD_USER_TO_PLAN = "ADD_USER_TO_PLAN";
+export const REMOVE_USER_FROM_PLAN = "REMOVE_USER_FROM_PLAN";
+
+// Estadísticas
+export const GET_STATISTICS = "GET_STATISTICS";
+export const GET_PLAN_STATISTICS = "GET_PLAN_STATISTICS";
+export const GET_MONTHLY_STATISTICS = "GET_MONTHLY_STATISTICS";
+export const GET_MONTHLY_PLAN_STATISTICS = "GET_MONTHLY_PLAN_STATISTICS";
