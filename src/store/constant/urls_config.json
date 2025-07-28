@@ -1,14 +1,8 @@
 {
-  "urlLogin": "http://localhost:8082/auth/login",
-  "urlChangePassword": "http://localhost:8082",
-  "urlSendEmail": "http://localhost:8082",
-  "urlTransactions": "http://localhost:8081/transacciones",
-  "urlPlans": "http://localhost:8081/planes",
-  "urlUsersPlans": "http://localhost:8081/usuarios-planes",
-  "urlAdminTasks": "http://localhost:8081/admin/tareas",
-  "urlGateway": "http://localhost:8081/transacciones-service",
-  "urlHealthchecker": {
-    "getNamesService": "http://localhost:8082",
-    "getEndPointService": "http://localhost:8082"
-  }
+  "urlLogin": "http://54.84.63.55:8082/auth/login",
+  "urlTransactions": "http://54.84.63.55:8081/transacciones",
+  "urlPlans": "http://54.84.63.55:8081/planes",
+  "urlUsersPlans": "http://54.84.63.55:8081/usuarios-planes",
+  "urlAdminTasks": "http://54.84.63.55:8081/admin/tareas",
+  "urlGateway": "http://54.84.63.55:8081/transacciones-service"
 }
