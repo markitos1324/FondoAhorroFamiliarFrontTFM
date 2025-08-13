@@ -4,8 +4,11 @@ import { GET_PLANS, CREATE_PLAN, UPDATE_PLAN, DELETE_PLAN, ADD_USER_TO_PLAN, REM
 
 export const getPlans = (token: string) => async (dispatch: any) => {
   let headers = { Authorization: `Bearer ${token}` };
+  let body = {
+    "targetMethod": "GET"
+  }
   try {
-    const res = await axios.get(urlConfig.urlPlans, { headers });
+    const res = await axios.post(urlConfig.urlPlans, body, { headers });
     const plans = res.data;
     dispatch({
       type: GET_PLANS,
@@ -32,6 +35,10 @@ export const getPlans = (token: string) => async (dispatch: any) => {
 
 export const createPlan = (token: string, body: any) => async (dispatch: any) => {
   let headers = { Authorization: `Bearer ${token}` };
+  body = {
+    "targetMethod": "POST",
+    "body": body 
+  }
   try {
     const res = await axios.post(urlConfig.urlPlans, body, { headers });
     dispatch({
@@ -48,8 +55,12 @@ export const createPlan = (token: string, body: any) => async (dispatch: any) =>
 
 export const updatePlan = (token: string, id: number, body: any) => async (dispatch: any) => {
   let headers = { Authorization: `Bearer ${token}` };
+  body = {
+    "targetMethod": "PUT",
+    "body": body
+  }
   try {
-    const res = await axios.put(`${urlConfig.urlPlans}/${id}`, body, { headers });
+    const res = await axios.post(`${urlConfig.urlPlans}/${id}`, body, { headers });
     dispatch({
       type: UPDATE_PLAN,
       payload: { data: res.data, status: res.status },
@@ -64,8 +75,11 @@ export const updatePlan = (token: string, id: number, body: any) => async (dispa
 
 export const deletePlan = (token: string, id: number) => async (dispatch: any) => {
   let headers = { Authorization: `Bearer ${token}` };
+  let body = {
+    "targetMethod": "DELETE"
+  }
   try {
-    await axios.delete(`${urlConfig.urlPlans}/${id}`, { headers });
+    await axios.post(`${urlConfig.urlPlans}/${id}`, body, { headers });
     dispatch({
       type: DELETE_PLAN,
       payload: { id, status: 200 },
@@ -80,8 +94,12 @@ export const deletePlan = (token: string, id: number) => async (dispatch: any) =
 
 export const addUserToPlan = (token: string, planId: number, email: string) => async (dispatch: any) => {
   let headers = { Authorization: `Bearer ${token}` };
+  let body = {
+    "targetMethod": "POST",
+    "body": {}
+  }
   try {
-    const res = await axios.post(`${urlConfig.urlUsersPlans}/${planId}?email=${encodeURIComponent(email)}`, {}, { headers });
+    const res = await axios.post(`${urlConfig.urlUsersPlans}/${planId}?email=${encodeURIComponent(email)}`, body, { headers });
     dispatch({
       type: ADD_USER_TO_PLAN,
       payload: { data: res.data, status: res.status },
@@ -96,8 +114,11 @@ export const addUserToPlan = (token: string, planId: number, email: string) => a
 
 export const removeUserFromPlan = (token: string, planId: number, userId: number) => async (dispatch: any) => {
   let headers = { Authorization: `Bearer ${token}` };
+  let body = {
+    "targetMethod": "DELETE"
+  }
   try {
-    const res = await axios.delete(`${urlConfig.urlUsersPlans}/${planId}/desasociar-transaccion/${userId}`, { headers });
+    const res = await axios.post(`${urlConfig.urlUsersPlans}/${planId}/desasociar-transaccion/${userId}`, body, { headers });
     dispatch({
       type: REMOVE_USER_FROM_PLAN,
       payload: { data: res.data, status: res.status },
@@ -112,9 +133,12 @@ export const removeUserFromPlan = (token: string, planId: number, userId: number
 
 export const getPlanStatistics = (token: string, planId: string) => async (dispatch: any) => {
   let headers = { Authorization: `Bearer ${token}` };
+  let body = {
+    "targetMethod": "GET"
+  }
   try {
     // Adjust the URL as per your backend endpoint for plan statistics
-    const res = await axios.get(`${urlConfig.urlPlans}/${planId}/estadisticas`, { headers });
+    const res = await axios.post(`${urlConfig.urlPlans}/${planId}/estadisticas`, body, { headers });
     dispatch({
       type: GET_PLAN_STATISTICS,
       payload: {data: res.data },

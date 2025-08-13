@@ -11,8 +11,11 @@ export const logoutApp = () => {
 
 export const loginApp = (email: String, password: String) => async (dispatch: any) => {
   let body = {
-    email,
-    password,
+    "targetMethod": "POST",
+    "body": {
+        email,
+        password,
+    }
   };
   try {
     const res = await axios.post(urlConfig.urlLogin, body);

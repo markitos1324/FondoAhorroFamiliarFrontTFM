@@ -5,8 +5,11 @@ import { getTotalsByType } from "../../helpers/helpers";
 
 export const getStatistics = (token: string) => async (dispatch: any) => {
   let headers = { Authorization: `Bearer ${token}` };
+  let body = {
+    "targetMethod": "GET"
+  }
   try {
-    const res = await axios.get(`${urlConfig.urlTransactions}/estadisticas-generales`, { headers });
+    const res = await axios.post(`${urlConfig.urlTransactions}/estadisticas-generales`, body, { headers });
     dispatch({
       type: GET_STATISTICS,
       payload: { data: res.data, status: res.status },
@@ -21,8 +24,11 @@ export const getStatistics = (token: string) => async (dispatch: any) => {
 
 export const getPlanStatistics = (token: string, planId: number) => async (dispatch: any) => {
   let headers = { Authorization: `Bearer ${token}` };
+  let body = {
+    "targetMethod": "GET"
+  }
   try {
-    const res = await axios.get(`${urlConfig.urlPlans}/${planId}/estadisticas`, { headers });
+    const res = await axios.post(`${urlConfig.urlPlans}/${planId}/estadisticas`, body, { headers });
     dispatch({
       type: GET_PLAN_STATISTICS,
       payload: { data: res.data, status: res.status },
@@ -37,8 +43,11 @@ export const getPlanStatistics = (token: string, planId: number) => async (dispa
 
 export const getMonthlyStatistics = (token: string, from: string, to: string) => async (dispatch: any) => {
   let headers = { Authorization: `Bearer ${token}` };
+  let body = {
+    "targetMethod": "GET"
+  }
   try {
-    const res = await axios.get(`${urlConfig.urlTransactions}?desde=${from}&hasta=${to}`, { headers });
+    const res = await axios.post(`${urlConfig.urlTransactions}?desde=${from}&hasta=${to}`, body, { headers });
     const totals = getTotalsByType(res.data);
     dispatch({
       type: GET_MONTHLY_STATISTICS,
@@ -54,8 +63,11 @@ export const getMonthlyStatistics = (token: string, from: string, to: string) =>
 
 export const getMonthlyPlanStatistics = (token: string, planId: number) => async (dispatch: any) => {
   let headers = { Authorization: `Bearer ${token}` };
+  let body = {
+    "targetMethod": "GET"
+  }
   try {
-    const res = await axios.get(`${urlConfig.urlPlans}/${planId}/estadisticas-mensuales`, { headers });
+    const res = await axios.post(`${urlConfig.urlPlans}/${planId}/estadisticas-mensuales`, body, { headers });
     dispatch({
       type: GET_MONTHLY_PLAN_STATISTICS,
       payload: { data: res.data, status: res.status },

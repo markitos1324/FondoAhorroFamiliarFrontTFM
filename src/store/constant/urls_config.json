@@ -1,8 +1,8 @@
 {
-  "urlLogin": "http://54.84.63.55:8082/auth/login",
-  "urlTransactions": "http://54.84.63.55:8081/transacciones",
-  "urlPlans": "http://54.84.63.55:8081/planes",
-  "urlUsersPlans": "http://54.84.63.55:8081/usuarios-planes",
-  "urlAdminTasks": "http://54.84.63.55:8081/admin/tareas",
-  "urlGateway": "http://54.84.63.55:8081/transacciones-service"
+  "urlLogin": "https://ace-opossum-calm.ngrok-free.app/auth/login",
+  "urlTransactions": "https://ace-opossum-calm.ngrok-free.app/transacciones",
+  "urlPlans": "https://ace-opossum-calm.ngrok-free.app/planes",
+  "urlUsersPlans": "https://ace-opossum-calm.ngrok-free.app/usuarios-planes",
+  "urlAdminTasks": "https://ace-opossum-calm.ngrok-free.app/admin/tareas",
+  "urlGateway": "https://ace-opossum-calm.ngrok-free.app/transacciones-service"
 }

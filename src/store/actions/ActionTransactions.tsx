@@ -11,8 +11,11 @@ import {
 // 1. Listar transacciones
 export const getTransactions = (token: string) => async (dispatch: any) => {
   let headers = { Authorization: `Bearer ${token}` };
+  let body = {
+    "targetMethod": "GET"
+  }
   try {
-    const res = await axios.get(urlConfig.urlTransactions, { headers });
+    const res = await axios.post(urlConfig.urlTransactions, body, { headers });
     dispatch({
       type: GET_TRANSACTIONS,
       payload: { data: res.data, status: res.status },
@@ -28,6 +31,10 @@ export const getTransactions = (token: string) => async (dispatch: any) => {
 // 2. Create transaction
 export const createTransaction = (token: string, body: any) => async (dispatch: any) => {
   let headers = { Authorization: `Bearer ${token}` };
+  body = {
+    "targetMethod": "POST",
+    "body": body
+  }
   try {
     const res = await axios.post(urlConfig.urlTransactions, body, { headers });
     dispatch({
@@ -45,8 +52,12 @@ export const createTransaction = (token: string, body: any) => async (dispatch: 
 // 3. Update transaction
 export const updateTransaction = (token: string, id: number, body: any) => async (dispatch: any) => {
   let headers = { Authorization: `Bearer ${token}` };
+  body = {
+    "targetMethod": "PUT",
+    "body": body
+  }
   try {
-    const res = await axios.put(`${urlConfig.urlTransactions}/${id}`, body, { headers });
+    const res = await axios.post(`${urlConfig.urlTransactions}/${id}`, body, { headers });
     dispatch({
       type: UPDATE_TRANSACTION,
       payload: { data: res.data, status: res.status },
@@ -62,8 +73,11 @@ export const updateTransaction = (token: string, id: number, body: any) => async
 // 4. Delete transaction
 export const deleteTransaction = (token: string, id: number) => async (dispatch: any) => {
   let headers = { Authorization: `Bearer ${token}` };
+  let body = {
+    "targetMethod": "DELETE"
+  }
   try {
-    await axios.delete(`${urlConfig.urlTransactions}/${id}`, { headers });
+    await axios.post(`${urlConfig.urlTransactions}/${id}`,body, { headers });
     dispatch({
       type: DELETE_TRANSACTION,
       payload: { id, status: 200 },
@@ -79,8 +93,11 @@ export const deleteTransaction = (token: string, id: number) => async (dispatch:
 // 5. Filter transactions by date range
 export const filterTransactionsByDate = (token: string, from: string, to: string) => async (dispatch: any) => {
   let headers = { Authorization: `Bearer ${token}` };
+  let body = {
+    "targetMethod": "GET"
+  }
   try {
-    const res = await axios.get(`${urlConfig.urlTransactions}?desde=${from}&hasta=${to}`, { headers });
+    const res = await axios.post(`${urlConfig.urlTransactions}?desde=${from}&hasta=${to}`,body, { headers });
     dispatch({
       type: GET_TRANSACTIONS_FILTERED,
       payload: { data: res.data, status: res.status },
@@ -96,6 +113,10 @@ export const filterTransactionsByDate = (token: string, from: string, to: string
 // 6. Create transaction in a plan
 export const createTransactionInPlan = (token: string, body: any) => async (dispatch: any) => {
   let headers = { Authorization: `Bearer ${token}` };
+  body = {
+    "targetMethod": "POST",
+    "body": body
+  }
   try {
     // The backend expects planAhorroId in the body
     const res = await axios.post(urlConfig.urlTransactions, body, { headers });
