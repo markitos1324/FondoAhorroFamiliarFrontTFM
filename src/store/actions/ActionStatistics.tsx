@@ -9,7 +9,8 @@ export const getStatistics = (token: string) => async (dispatch: any) => {
     "targetMethod": "GET"
   }
   try {
-    const res = await axios.post(`${urlConfig.urlTransactions}/estadisticas-generales`, body, { headers });
+    const res = await axios.post(`${urlConfig.urlPlans}/estadisticas-generales`, body, { headers });
+    res.data.saldo = getTotalAmount(res.data);
     dispatch({
       type: GET_STATISTICS,
       payload: { data: res.data, status: res.status },
@@ -79,3 +80,14 @@ export const getMonthlyPlanStatistics = (token: string, planId: number) => async
     });
   }
 };
+
+
+function getTotalAmount(transactions: any[]) {
+  let total = 0;
+  transactions.forEach(transaction => {
+    if (transaction.totalAcumulado) {
+      total += transaction.totalAcumulado;
+    }
+  });
+  return total;
+}

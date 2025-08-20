@@ -1,8 +1,9 @@
 {
-  "urlLogin": "https://ace-opossum-calm.ngrok-free.app/auth/login",
-  "urlTransactions": "https://ace-opossum-calm.ngrok-free.app/transacciones",
-  "urlPlans": "https://ace-opossum-calm.ngrok-free.app/planes",
-  "urlUsersPlans": "https://ace-opossum-calm.ngrok-free.app/usuarios-planes",
-  "urlAdminTasks": "https://ace-opossum-calm.ngrok-free.app/admin/tareas",
+  "urlLogin": "https://ace-opossum-calm.ngrok-free.app/usuarios-service/auth/login",
+  "urlTransactions": "https://ace-opossum-calm.ngrok-free.app/transacciones-service/transacciones",
+  "urlPlans": "https://ace-opossum-calm.ngrok-free.app/transacciones-service/planes",
+  "urlUsersPlans": "https://ace-opossum-calm.ngrok-free.app/transacciones-service/usuarios-planes",
+  "urlAdminTasks": "https://ace-opossum-calm.ngrok-free.app/transacciones-service/admin/tareas",
+  "urlMembers": "https://ace-opossum-calm.ngrok-free.app/usuarios-service/fondos",
   "urlGateway": "https://ace-opossum-calm.ngrok-free.app/transacciones-service"
 }

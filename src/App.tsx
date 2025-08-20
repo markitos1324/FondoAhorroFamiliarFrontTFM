@@ -27,7 +27,7 @@ function App() {
       case 'login':
         return <Login setCurrentPage={setCurrentPage} />;
       case 'dashboard':
-        return <Dashboard />;
+        return <Dashboard  setCurrentPage={setCurrentPage}/>;
       case 'members':
         return <Members />;
       case 'transactions':

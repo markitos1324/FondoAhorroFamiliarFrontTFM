@@ -1,8 +1,8 @@
 export interface FamilyMember {
   id: string;
-  name: string;
+  email: string;
   avatar?: string;
-  role: 'admin' | 'member';
+  rol: 'ADMIN' | 'COLABORADOR';
   joinedDate: string;
 }
 

@@ -167,3 +167,64 @@ export function showTransactionForm(onSubmit: (data: any) => void, type: 'INGRES
     }
   });
 }
+
+export function showAddMember(onSubmit: (data: any) => void) {
+  Swal.fire({
+    title: `<span style="color:#2563eb;font-weight:600;">Agregar Usuario</span>`,
+    html: `
+      <div style="display:flex;flex-direction:column;gap:16px;align-items:stretch;width:100%;">
+        <input 
+          id="swal-email" 
+          type="email" 
+          class="swal2-input" 
+          placeholder="Correo electrónico (ej: usuario1@ahorro.com.co)" 
+          style="width:100%;margin:0;border-radius:0.5rem;border:1px solid #d1d5db;" 
+        />
+        <select 
+          id="swal-rol" 
+          class="swal2-input" 
+          style="width:100%;margin:0;border-radius:0.5rem;border:1px solid #d1d5db;"
+        >
+          <option value="">Seleccione un rol</option>
+          <option value="ADMIN">ADMIN</option>
+          <option value="COLABORADOR">COLABORADOR</option>
+        </select>
+      </div>
+    `,
+    focusConfirm: false,
+    showCancelButton: true,
+    confirmButtonText: `<span style="background-color:#2563eb;color:white;padding:6px 24px;border-radius:0.375rem;font-weight:500;">Agregar</span>`,
+    cancelButtonText: '<span style="background-color:#6b7280;color:white;padding:6px 24px;border-radius:0.375rem;font-weight:500;">Cancelar</span>',
+    customClass: {
+      confirmButton: 'swal2-confirm custom-deposit-btn',
+      cancelButton: 'swal2-cancel custom-cancel-btn',
+      popup: 'swal2-rounded',
+      actions: 'swal2-actions-separated',
+    },
+    buttonsStyling: false,
+    preConfirm: () => {
+      const email = (document.getElementById('swal-email') as HTMLInputElement).value.trim();
+      const rol = (document.getElementById('swal-rol') as HTMLSelectElement).value;
+
+      // Regex simple para validar email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!email || !rol) {
+        Swal.showValidationMessage('Todos los campos son obligatorios');
+        return;
+      }
+
+      if (!emailRegex.test(email)) {
+        Swal.showValidationMessage('Ingrese un correo electrónico válido');
+        return;
+      }
+
+      return { email, rol };
+    }
+  }).then((result) => {
+    if (result.isConfirmed && result.value) {
+      onSubmit(result.value);
+    }
+  });
+}
+

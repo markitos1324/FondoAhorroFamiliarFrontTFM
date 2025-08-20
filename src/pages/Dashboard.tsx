@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { StatCard } from '../components/StatCard';
 import { TransactionItem } from '../components/TransactionItem';
 import { GoalCard } from '../components/GoalCard';
@@ -13,8 +13,26 @@ import { useSelector } from 'react-redux';
 import { getLastDayOfCurrentMonth } from '../helpers/helpers';
 import { SavingsGoal } from '../types';
 
-export const Dashboard: React.FC = () => {
+type Page = 'login' | 'dashboard' | 'members' | 'transactions' | 'goals' | 'settings';
+
+interface DashboardProps {
+  setCurrentPage?: Dispatch<SetStateAction<Page>>;
+}
+
+export const Dashboard: React.FC<DashboardProps> = ({ setCurrentPage }) => {
   const transactions = useSelector((state: any) => state.transactionsReducer);
+
+  function redirection(transactions: string) {
+    if (setCurrentPage) {
+      switch (transactions) {
+        case "transactions":
+          setCurrentPage('transactions');
+          break;
+        default:
+          break;
+      }
+    } 
+  }
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,7 +92,7 @@ export const Dashboard: React.FC = () => {
             </div>
             <div className="bg-gray-50 px-4 py-4 sm:px-6">
               <div className="text-sm">
-                <button className="font-medium text-blue-600 hover:text-blue-500 transition-colors duration-150">
+                <button className="font-medium text-blue-600 hover:text-blue-500 transition-colors duration-150" onClick={() => redirection("transactions")}>
                   Ver todas las transacciones
                 </button>
               </div>

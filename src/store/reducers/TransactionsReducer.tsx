@@ -1,10 +1,14 @@
+import { Members } from "../../pages/Members";
 import { SavingsGoal } from "../../types";
-import { GET_TRANSACTIONS, GET_STATISTICS, GET_MONTHLY_STATISTICS, GET_PLANS, GET_PLAN_STATISTICS, GET_TRANSACTIONS_FILTERED, CREATE_TRANSACTION, CREATE_PLAN } from "../constant/Constant";
+import { addMember } from "../actions/ActionMembers";
+import { GET_TRANSACTIONS, GET_STATISTICS, GET_MONTHLY_STATISTICS, GET_PLANS, GET_PLAN_STATISTICS, GET_TRANSACTIONS_FILTERED, CREATE_TRANSACTION, CREATE_PLAN, GET_MEMBERS, ADD_MEMBER, CLEAR } from "../constant/Constant";
 
 const initialState = {
   transactions: {},
   statistics: [],
   monthstatistics: [],
+  members: [],
+  addMember: {},
   plans: {
     plansStatistics: [],
   },
@@ -76,6 +80,23 @@ export default function transactionsReducer(state = initialState, action: any) {
           ...state.plans,
           createdPlan: action.payload
         }
+      };
+
+      // Miembros
+    case GET_MEMBERS:
+      return {
+        ...state,
+        members: action.payload.data
+      };
+      case ADD_MEMBER:
+      return {
+        ...state, 
+        addMember: action.payload.data
+      };
+      case CLEAR:
+      return {
+        ...state,
+        addMember: {}
       };
     default:
       return state;

@@ -33,7 +33,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
     { name: 'Miembros de la Familia', icon: Users, page: 'members' as Page },
     { name: 'Transacciones', icon: Receipt, page: 'transactions' as Page },
     { name: 'Metas de Ahorro', icon: Target, page: 'goals' as Page },
-    { name: 'Configuración', icon: Settings, page: 'settings' as Page },
   ];
 
   return (
